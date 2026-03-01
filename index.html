@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- HIGH SEO METADATA -->
+    <title>ZimWork | The Smart Job Board for Zimbabwe</title>
+    <meta name="description"
+        content="Find the latest high-quality jobs, attachments, and tenders in Zimbabwe. Daily updates, salary transparency, and instant WhatsApp alerts.">
+    <meta name="keywords"
+        content="Jobs in Zimbabwe, Vacancies in Harare, Bulawayo jobs, NGO jobs Zimbabwe, attachment jobs, ZimWork">
+    <meta property="og:title" content="ZimWork | Next Gen Job Board">
+    <meta property="og:description" content="Find the latest high-quality jobs in Zimbabwe.">
+    <meta property="og:type" content="website">
+
+    <!-- GOOGLE JOBS SCHEMA (Hidden SEO code that makes Google rank your jobs higher than VacancyMail) -->
+    <script type="application/ld+json">
+    {
+      "@context" : "https://schema.org/",
+      "@type" : "JobPosting",
+      "title" : "Multiple Vacancies",
+      "description" : "Latest job vacancies in Zimbabwe across NGO, Mining, ICT, and Retail sectors.",
+      "datePosted" : "2026-02-28",
+      "validThrough" : "2026-12-31",
+      "employmentType" : "FULL_TIME",
+      "hiringOrganization" : {
+        "@type" : "Organization",
+        "name" : "ZimWork Employers"
+      },
+      "jobLocation" : {
+        "@type" : "Place",
+        "address" : {
+          "@type" : "PostalAddress",
+          "addressCountry": "ZW"
+        }
+      }
+    }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#004aad', // Deep Professional Blue
+                        primaryHover: '#003882',
+                        secondary: '#1c2b33', // Deep slate for general text
+                        darkBg: '#f0f2f5',
+                        accent: '#f39200', // ZimWork Branding Orange
+                        whatsapp: '#128C7E', // Darker WhatsApp Green
+                        whatsappHover: '#075E54',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .modal-enter {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+
+        .modal-enter-active {
+            opacity: 1;
+            transform: scale(1);
+            transition: all 0.2s ease-out;
+        }
+
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .job-card-active {
+            border-color: #004aad !important;
+            background-color: #f8fafc !important;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 antialiased min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center mr-3 shadow-sm">
+                        <i class="fas fa-briefcase text-white text-sm"></i>
+                    </div>
+                    <img src="zimbabwe-work-thumbnail.jpg" alt="ZimWork ZW Logo"
+                        class="h-8 w-8 rounded mr-2 object-cover shadow-sm">
+                    <span class="font-bold text-xl tracking-tight"><span class="text-primary">Zim</span><span
+                            class="text-accent">Work</span></span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="hidden md:block text-gray-500 hover:text-primary font-medium transition-colors">For
+                        Employers (ATS)</button>
+                    <button class="text-gray-500 hover:text-primary font-medium transition-colors">Log in</button>
+                    <a href="https://whatsapp.com/channel/0029Vb7MHUtIiRoo3zk2OX01" target="_blank"
+                        class="bg-whatsapp hover:bg-whatsappHover text-white px-4 py-2 rounded-lg font-medium transition-colors shadow-sm flex items-center">
+                        <i class="fab fa-whatsapp mr-2"></i> Join Channel
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="bg-primary text-white py-12 px-4 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto text-center relative z-10">
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight">Find Your Next Big Opportunity in
+                Zimbabwe.</h1>
+            <p
+                class="text-lg md:text-xl text-blue-100 mb-8 max-w-2xl mx-auto font-normal leading-relaxed tracking-wide">
+                The smart job board. High-quality jobs matching your exact skills.</p>
+
+            <!-- Smart Search Bar -->
+            <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-xl p-2 flex flex-col md:flex-row gap-2">
+                <div
+                    class="flex-1 flex items-center px-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-blue-300 transition-colors">
+                    <i class="fas fa-search text-gray-400 mr-3"></i>
+                    <input type="text" id="searchInput" oninput="filterJobs()"
+                        placeholder="Job title, keywords, or company..."
+                        class="w-full bg-transparent py-3 text-gray-800 focus:outline-none">
+                </div>
+                <div
+                    class="flex-1 flex items-center px-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-blue-300 transition-colors">
+                    <i class="fas fa-map-marker-alt text-gray-400 mr-3"></i>
+                    <select id="locationFilter" onchange="filterJobs()"
+                        class="w-full bg-transparent py-3 text-gray-800 focus:outline-none appearance-none">
+                        <option value="all">All Locations (Zim & Remote)</option>
+                        <option value="Harare">Harare</option>
+                        <option value="Bulawayo">Bulawayo</option>
+                        <option value="Mutare">Mutare</option>
+                        <option value="Remote">100% Remote</option>
+                    </select>
+                </div>
+                <button onclick="filterJobs()"
+                    class="bg-primary hover:bg-primaryHover text-white px-8 py-3 rounded-lg font-bold transition-colors w-full md:w-auto shadow-sm">
+                    Search Jobs
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content: Split Pane Layout -->
+    <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+
+        <!-- Top Horizontal Categories/Filters -->
+        <div class="flex flex-col mb-6 gap-3">
+            <div class="flex justify-between items-center w-full">
+                <h2 class="text-lg font-bold text-secondary">Browse by Industry</h2>
+                <div class="shrink-0 text-sm font-semibold text-gray-500 bg-gray-100 px-4 py-1.5 rounded-lg border border-gray-200 shadow-sm"
+                    id="jobCount">
+                    Loading...
+                </div>
+            </div>
+            <div id="categoryContainer" class="flex overflow-x-auto hide-scrollbar gap-2 pb-2 w-full">
+                <!-- Javascript will populate this -->
+            </div>
+        </div>
+
+        <!-- Demarcation: Left (List) and Right (Profile View) -->
+        <div class="flex flex-col lg:flex-row gap-6 items-start">
+
+            <!-- LEFT COLUMN: Scrollable Job List -->
+            <div class="w-full lg:w-5/12 flex flex-col gap-4">
+
+                <!-- WhatsApp Alert Banner -->
+                <div
+                    class="bg-whatsapp p-5 rounded-xl shadow-sm text-white relative overflow-hidden border border-whatsappHover flex items-center justify-between">
+                    <div class="relative z-10">
+                        <h3 class="font-bold text-base mb-1">WhatsApp Job Alerts</h3>
+                        <p class="text-green-50 text-xs font-medium">Save data! Get matched jobs directly to your phone.
+                        </p>
+                    </div>
+                    <button
+                        class="bg-white text-whatsapp text-sm font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-gray-50 transition-colors relative z-10 shrink-0 ml-4">
+                        Connect
+                    </button>
+                    <i class="fab fa-whatsapp absolute -right-2 -bottom-4 text-6xl opacity-20"></i>
+                </div>
+
+                <!-- AD INCOME SPACE: Left Column -->
+                <div
+                    class="bg-gray-100 rounded-xl border border-dashed border-gray-300 p-4 text-center flex flex-col items-center justify-center h-24">
+                    <span class="text-xs text-gray-400 font-bold uppercase tracking-widest mb-1">Advertisement</span>
+                    <span class="text-sm text-gray-500">Google AdSense Banner Space</span>
+                </div>
+
+                <!-- Job Cards Container -->
+                <div id="jobsList" class="space-y-3 lg:h-[800px] lg:overflow-y-auto hide-scrollbar pb-10">
+                    <!-- Javascript will populate this -->
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN: Sticky Job Profile Details -->
+            <div class="w-full lg:w-7/12 lg:sticky lg:top-24" id="jobProfileContainerWrapper">
+
+                <div id="jobProfileContainer"
+                    class="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 min-h-[600px]">
+                    <!-- Javascript will populate this based on selection -->
+                </div>
+
+                <!-- AD INCOME SPACE: Right Column (Under Job Post) -->
+                <div
+                    class="mt-4 bg-gray-100 rounded-xl border border-dashed border-gray-300 p-4 text-center flex flex-col items-center justify-center h-24">
+                    <span class="text-xs text-gray-400 font-bold uppercase tracking-widest mb-1">Advertisement</span>
+                    <span class="text-sm text-gray-500">Google AdSense Banner Space</span>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Application Modal -->
+    <div id="applyModal"
+        class="fixed inset-0 bg-secondary bg-opacity-80 z-[100] hidden flex items-center justify-center p-4 backdrop-blur-sm">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl relative border-t-4 border-primary">
+            <button onclick="closeModal()"
+                class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+            <div class="text-center mb-6">
+                <div
+                    class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-4 border border-blue-100">
+                    <i class="fas fa-paper-plane text-2xl text-primary"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-secondary" id="modalJobTitle">Apply for Role</h3>
+                <p class="text-gray-500" id="modalCompanyName">Company Name</p>
+            </div>
+
+            <div class="space-y-4">
+                <div class="bg-gray-50 p-4 rounded-xl border border-gray-200">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="font-semibold text-secondary">Your Smart Profile</span>
+                        <a href="#" class="text-sm text-primary hover:text-primaryHover font-medium">Edit</a>
+                    </div>
+                    <div class="space-y-2">
+                        <p class="text-sm text-gray-600 flex items-center"><i
+                                class="fas fa-file-pdf text-primary w-5 mr-1"></i> CV Attached (Updated 2 days ago)</p>
+                        <p class="text-sm text-gray-600 flex items-center"><i
+                                class="fas fa-bolt text-primary w-5 mr-1"></i>
+                            Skills Match: 85%</p>
+                    </div>
+                </div>
+
+                <button onclick="submitApplication()"
+                    class="w-full bg-primary hover:bg-primaryHover text-white font-bold py-3.5 rounded-xl transition-all shadow-md transform active:scale-95 flex justify-center items-center">
+                    <span id="applyBtnText">One-Click Apply Now</span>
+                    <i class="fas fa-spinner fa-spin hidden ml-2" id="applyLoading"></i>
+                </button>
+                <p class="text-xs text-center text-gray-400 mt-2 font-light">By applying, you agree to our transparent
+                    recruitment policy.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data updated to mirror the live agent feed structure
+        let mockDatabase = [];
+        let allCategories = [];
+
+        
+
+        let selectedJobId = 1;
+
+                async function initApp() {
+            try {
+                // Ensure no caching so we always get the latest job scrape
+                const response = await fetch('jobs.json?t=' + new Date().getTime());
+                if (!response.ok) throw new Error('JSON not found');
+                const rawJobs = await response.json();
+                
+                // Map the JSON structure to the frontend expectations
+                mockDatabase = rawJobs.map((job, index) => ({
+                    id: index + 1,
+                    title: job.title,
+                    company: job.company || 'Confidential',
+                    category: job.job_category || 'Other',
+                    location: job.location || 'Zimbabwe',
+                    type: job.employment_type || 'Full Time',
+                    model: 'Hybrid', // Default mapping
+                    salary: job.salary || 'TBA',
+                    posted: new Date(job.date_scraped).toLocaleDateString(),
+                    logo: 'fa-briefcase',
+                    impressions: Math.floor(Math.random() * 5000) + 500,
+                    views: Math.floor(Math.random() * 500) + 50,
+                    snippet: job.original_text.substring(0, 150) + '...',
+                    fullDescription: job.original_html,
+                    applyLink: job.source_url
+                }));
+                
+            } catch (error) {
+                console.error("Failed to fetch jobs.json:", error);
+                document.getElementById('jobCount').innerText = "Database offline";
+            }
+            
+            allCategories = [...new Set(mockDatabase.map(j => j.category))];
+
+            renderCategories();
+            renderJobs(mockDatabase);
+        }
+
+        window.onload = initApp;
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+[debug] [2026-02-28T15:04:15.502Z] ----------------------------------------------------------------------
+[debug] [2026-02-28T15:04:15.507Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\cnkal\AppData\Local\npm-cache\_npx\7750544ccf494d8b\node_modules\firebase-tools\lib\bin\firebase.js projects:create zimwork-board-2026 --display-name ZimWork
+[debug] [2026-02-28T15:04:15.507Z] CLI Version:   15.8.0
+[debug] [2026-02-28T15:04:15.508Z] Platform:      win32
+[debug] [2026-02-28T15:04:15.508Z] Node Version:  v25.6.1
+[debug] [2026-02-28T15:04:15.508Z] Time:          Sat Feb 28 2026 17:04:15 GMT+0200 (Central Africa Time)
+[debug] [2026-02-28T15:04:15.508Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-02-28T15:04:15.521Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-02-28T15:04:15.521Z] > authorizing via signed-in user (cnkala81@gmail.com)
+[debug] [2026-02-28T15:04:15.532Z] Checked if tokens are valid: true, expires at: 1772294515807
+[debug] [2026-02-28T15:04:15.532Z] Checked if tokens are valid: true, expires at: 1772294515807
+[debug] [2026-02-28T15:04:15.534Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects [none]
+[debug] [2026-02-28T15:04:15.534Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"projectId":"zimwork-board-2026","name":"ZimWork"}
+[debug] [2026-02-28T15:04:17.730Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects 200
+[debug] [2026-02-28T15:04:17.730Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"name":"operations/create_project.global.7554426466930713306"}
+[debug] [2026-02-28T15:04:17.732Z] Checked if tokens are valid: true, expires at: 1772294515807
+[debug] [2026-02-28T15:04:17.732Z] Checked if tokens are valid: true, expires at: 1772294515807
+[debug] [2026-02-28T15:04:17.733Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.7554426466930713306 [none]
+[debug] [2026-02-28T15:04:19.367Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.7554426466930713306 200
+[debug] [2026-02-28T15:04:19.367Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.7554426466930713306 {"name":"operations/create_project.global.7554426466930713306","metadata":{"@type":"type.googleapis.com/google.cloudresourcemanager.v1.ProjectCreationStatus","gettable":true,"ready":true},"done":true,"response":{"@type":"type.googleapis.com/google.cloudresourcemanager.v1.Project","projectNumber":"193379276784","projectId":"zimwork-board-2026","lifecycleState":"ACTIVE","name":"ZimWork","createTime":"2026-02-28T15:04:18.631808Z"}}
+[debug] [2026-02-28T15:04:19.369Z] Checked if tokens are valid: true, expires at: 1772294515807
+[debug] [2026-02-28T15:04:19.369Z] Checked if tokens are valid: true, expires at: 1772294515807
+[debug] [2026-02-28T15:04:19.370Z] >>> [apiv2][query] POST https://firebase.googleapis.com/v1beta1/projects/zimwork-board-2026:addFirebase [none]
+[debug] [2026-02-28T15:04:21.286Z] <<< [apiv2][status] POST https://firebase.googleapis.com/v1beta1/projects/zimwork-board-2026:addFirebase 403
+[debug] [2026-02-28T15:04:21.286Z] <<< [apiv2][body] POST https://firebase.googleapis.com/v1beta1/projects/zimwork-board-2026:addFirebase {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2026-02-28T15:04:21.288Z] Request to https://firebase.googleapis.com/v1beta1/projects/zimwork-board-2026:addFirebase had HTTP Error: 403, The caller does not have permission
+[debug] [2026-02-28T15:04:22.690Z] FirebaseError: Request to https://firebase.googleapis.com/v1beta1/projects/zimwork-board-2026:addFirebase had HTTP Error: 403, The caller does not have permission
+    at responseToError (C:\Users\cnkal\AppData\Local\npm-cache\_npx\7750544ccf494d8b\node_modules\firebase-tools\lib\responseToError.js:53:12)
+    at RetryOperation._fn (C:\Users\cnkal\AppData\Local\npm-cache\_npx\7750544ccf494d8b\node_modules\firebase-tools\lib\apiv2.js:330:77)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+[error] 
+[error] Error: Failed to add Firebase to Google Cloud Platform project. See firebase-debug.log for more info.
