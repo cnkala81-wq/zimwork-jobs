@@ -23,6 +23,45 @@ const headers = {
     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
 };
 
+function cleanJobHtml(rawHtml) {
+    const $ = cheerio.load(rawHtml);
+
+    $('script, style, iframe, nav, header, footer, form').remove();
+    $('.share, .social, .advert, .ads, .apply-btn, .save-job, .job-meta').remove();
+
+    $('a').each((i, el) => {
+        const href = $(el).attr('href') || '';
+        if (href.includes('ihararejobs.com') || href.includes('vacancymail.co.zw')) {
+            $(el).contents().unwrap();
+        }
+    });
+
+    return $('body').html() || '';
+}
+
+function normalizeHeadings(rawHtml) {
+    const $ = cheerio.load(rawHtml);
+
+    $('h1, h2, h3, h4, h5, h6, strong').each((i, el) => {
+        const text = $(el).text().trim();
+        if (text.length > 0 && text.length < 60) {
+            const uppercased = text.toUpperCase();
+            if (el.tagName === 'strong') {
+                // Check if it's the only thing in a paragraph, if so, format whole p
+                const parent = $(el).parent();
+                if (parent[0] && parent[0].tagName === 'p' && parent.children().length === 1 && parent.text().trim() === text) {
+                    parent.html(`<strong>${uppercased}</strong>`);
+                    return;
+                }
+            }
+            $(el).replaceWith(`<p><strong>${uppercased}</strong></p>`);
+        }
+    });
+
+    return $('body').html() || '';
+}
+
+
 /* --- IHARARE JOBS SCRAPER --- */
 async function scrapeIharareJobs() {
     const jobs = [];
@@ -36,7 +75,6 @@ async function scrapeIharareJobs() {
         const jobLinks = new Set();
         $('a').each((i, el) => {
             const href = $(el).attr('href');
-            // iHarare individual jobs use /job/
             if (href && href.startsWith('/job/') && href.length > 10) {
                 jobLinks.add(baseUrl + href);
             }
@@ -60,21 +98,22 @@ async function scrapeIharareJobs() {
                 if (container.length === 0) container = $job('.col-md-8, .main-content'); // fallback
                 if (container.length === 0) container = $job('body');
 
-                const original_html = container.html() || "";
+                const rawHtml = container.html() || "";
+                const cleaned = cleanJobHtml(rawHtml);
+                const original_html = normalizeHeadings(cleaned).trim();
                 const original_text = container.text().trim().replace(/\s+/g, ' ');
 
                 jobs.push({
                     title: title,
-                    company: company.substring(0, 50),
-                    location: location.substring(0, 50),
+                    company: company,
+                    location: location,
                     salary: null,
-                    employment_type: "Full Time",
+                    employment_type: null,
                     closing_date: null,
-                    job_category: "General",
-                    source_site: "iHarare Jobs",
+                    job_category: null,
                     source_url: url,
                     date_scraped: new Date().toISOString(),
-                    original_html: original_html.trim(),
+                    original_html: original_html,
                     original_text: original_text
                 });
                 await sleep(500);
@@ -97,7 +136,6 @@ async function scrapeVacancyMail() {
         const jobLinks = new Set();
         $('a').each((i, el) => {
             const href = $(el).attr('href');
-            // VacancyMail individual jobs use /jobs/
             if (href && href.startsWith('/jobs/') && href.length > 15) {
                 jobLinks.add(baseUrl + href);
             }
@@ -121,21 +159,22 @@ async function scrapeVacancyMail() {
                 if (container.length === 0) container = $job('.col-md-8, .main-content');
                 if (container.length === 0) container = $job('body');
 
-                const original_html = container.html() || "";
+                const rawHtml = container.html() || "";
+                const cleaned = cleanJobHtml(rawHtml);
+                const original_html = normalizeHeadings(cleaned).trim();
                 const original_text = container.text().trim().replace(/\s+/g, ' ');
 
                 jobs.push({
                     title: title,
-                    company: company.substring(0, 50),
-                    location: location.substring(0, 50),
+                    company: company,
+                    location: location,
                     salary: null,
-                    employment_type: "Standard",
+                    employment_type: null,
                     closing_date: null,
-                    job_category: "Various",
-                    source_site: "VacancyMail",
+                    job_category: null,
                     source_url: url,
                     date_scraped: new Date().toISOString(),
-                    original_html: original_html.trim(),
+                    original_html: original_html,
                     original_text: original_text
                 });
                 await sleep(500);

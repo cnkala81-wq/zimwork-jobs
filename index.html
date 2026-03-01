@@ -327,15 +327,182 @@
                     document.getElementById('jobSchema').textContent = JSON.stringify(schema);
                 }
 
+                allCategories = [...new Set(mockDatabase.map(j => j.category))].filter(Boolean);
+                renderCategories();
+                renderJobs(mockDatabase);
+
             } catch (error) {
                 console.error("Failed to fetch jobs.json:", error);
                 document.getElementById('jobCount').innerText = "Database offline";
+                renderJobs([]); // Clear list on error
+            }
+        }
+
+        function renderCategories() {
+            const container = document.getElementById('categoryContainer');
+            if (!container) return;
+            container.innerHTML = `<button onclick="filterJobs('All')" class="px-5 py-2 rounded-full border border-gray-300 text-sm font-medium hover:bg-primary hover:text-white transition-colors bg-primary text-white shrink-0">All Jobs</button>`;
+
+            allCategories.forEach(cat => {
+                const btn = document.createElement('button');
+                btn.className = "px-5 py-2 rounded-full border border-gray-300 text-sm font-medium hover:bg-gray-100 transition-colors bg-white text-gray-700 whitespace-nowrap shrink-0";
+                btn.innerText = cat;
+                btn.onclick = () => filterJobs(cat);
+                container.appendChild(btn);
+            });
+        }
+
+        function renderJobs(jobsToRender) {
+            const container = document.getElementById('jobsList');
+            const countLabel = document.getElementById('jobCount');
+            if (!container) return;
+
+            container.innerHTML = '';
+            if (countLabel) countLabel.innerText = `${jobsToRender.length} Verified Vacancies`;
+
+            if (jobsToRender.length === 0) {
+                container.innerHTML = '<div class="p-8 text-center text-gray-500">No jobs found matching your criteria.</div>';
+                return;
             }
 
-            allCategories = [...new Set(mockDatabase.map(j => j.category))];
+            jobsToRender.forEach(job => {
+                const card = document.createElement('div');
+                let selectedClass = (job.id === selectedJobId) ? 'border-primary ring-2 ring-primary ring-opacity-50' : '';
+                card.className = `bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-all cursor-pointer relative group ${selectedClass}`;
+                card.onclick = () => selectJob(job.id);
 
-            renderCategories();
+                card.innerHTML = `
+                    <div class="flex items-start justify-between">
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border border-gray-100 ${job.id % 2 === 0 ? 'bg-primary/10 text-primary' : 'bg-accent/10 text-accent'}">
+                                <i class="fas ${job.logo} text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-900 group-hover:text-primary transition-colors text-lg">${job.title}</h3>
+                                <p class="text-sm text-gray-500 mt-1 font-medium">${job.company}</p>
+                                <div class="flex items-center gap-4 mt-3 text-sm text-gray-500 font-medium">
+                                    <span class="flex items-center gap-1"><i class="fas fa-map-marker-alt text-gray-400"></i> ${job.location}</span>
+                                    <span class="flex items-center gap-1"><i class="fas fa-briefcase text-gray-400"></i> ${job.type}</span>
+                                    <span class="flex items-center gap-1 hidden sm:flex"><i class="fas fa-history text-gray-400"></i> ${job.posted}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="text-gray-300 hover:text-red-500 transition-colors focus:outline-none">
+                            <i class="far fa-heart text-xl"></i>
+                        </button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+
+            // Auto-select first job if rendering a fresh list
+            if (jobsToRender.length > 0 && !jobsToRender.find(j => j.id === selectedJobId)) {
+                selectJob(jobsToRender[0].id);
+            }
+        }
+
+        function selectJob(id) {
+            selectedJobId = id;
+            const job = mockDatabase.find(j => j.id === id);
+            if (!job) return;
+
+            // Re-render list to show selection state visually
             renderJobs(mockDatabase);
+
+            const detailsPanel = document.getElementById('jobProfileContainer');
+            if (!detailsPanel) return;
+
+            detailsPanel.innerHTML = `
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <h2 class="text-2xl font-bold text-secondary">${job.title}</h2>
+                        <p class="text-primary font-medium mt-1 text-lg">${job.company} • <span class="text-gray-500 text-base">${job.location}</span></p>
+                    </div>
+                    <button class="bg-gray-100 p-3 rounded-full hover:bg-gray-200 transition-colors text-gray-600 focus:outline-none hidden sm:block">
+                        <i class="fas fa-share-alt"></i>
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+                    <div class="bg-gray-50 p-3 rounded-xl border border-gray-100">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-1">Salary</p>
+                        <p class="font-bold text-gray-900">${job.salary}</p>
+                    </div>
+                    <div class="bg-gray-50 p-3 rounded-xl border border-gray-100">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-1">Job Type</p>
+                        <p class="font-bold text-gray-900">${job.type}</p>
+                    </div>
+                    <div class="bg-gray-50 p-3 rounded-xl border border-gray-100">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-1">Work Model</p>
+                        <p class="font-bold text-gray-900">${job.model}</p>
+                    </div>
+                    <div class="bg-gray-50 p-3 rounded-xl border border-gray-100">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-1">Posted</p>
+                        <p class="font-bold text-gray-900">${job.posted}</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-3 mb-8">
+                    <button onclick="openApplyModal(${job.id})" class="flex-1 bg-primary hover:bg-primaryHover text-white font-bold py-3 px-6 rounded-xl transition-all shadow-md transform active:scale-95 flex justify-center items-center">
+                        <i class="fas fa-paper-plane mr-2"></i> Easy Apply
+                    </button>
+                    <a href="${job.applyLink}" target="_blank" class="flex-1 bg-white hover:bg-gray-50 text-secondary border border-gray-300 font-bold py-3 px-6 rounded-xl transition-colors flex justify-center items-center">
+                        <i class="fas fa-external-link-alt mr-2"></i> Apply on Source
+                    </a>
+                </div>
+
+                <div class="prose max-w-none text-gray-700 space-y-4">
+                    ${job.fullDescription}
+                </div>
+                
+                <div class="mt-8 pt-6 border-t border-gray-200 flex items-center justify-between text-sm text-gray-400 font-medium">
+                    <span><i class="fas fa-eye mr-1"></i> ${job.impressions} Impressions</span>
+                    <span><i class="fas fa-mouse-pointer mr-1"></i> ${job.views} Views</span>
+                </div>
+            `;
+        }
+
+        function filterJobs(categoryStr) {
+            let filtered = mockDatabase;
+            if (categoryStr !== 'All') {
+                filtered = mockDatabase.filter(j => j.category === categoryStr || j.title.toLowerCase().includes(categoryStr.toLowerCase()));
+            }
+            renderJobs(filtered);
+        }
+
+        function openApplyModal(id) {
+            const job = mockDatabase.find(j => j.id === id);
+            if (!job) return;
+            document.getElementById('modalJobTitle').innerText = `Apply for ${job.title}`;
+            document.getElementById('modalCompanyName').innerText = job.company;
+            document.getElementById('applyModal').classList.remove('hidden');
+        }
+
+        function closeApplyModal() {
+            document.getElementById('applyModal').classList.add('hidden');
+        }
+
+        function submitApplication() {
+            const btnText = document.getElementById('applyBtnText');
+            const loadingIcon = document.getElementById('applyLoading');
+
+            btnText.innerText = "Processing...";
+            loadingIcon.classList.remove('hidden');
+
+            setTimeout(() => {
+                document.getElementById('applyModal').innerHTML = `
+                < div class="bg-white max-w-md w-full rounded-2xl shadow-xl p-8 m-4 text-center transform transition-all duration-300 scale-100" >
+                        <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-check text-4xl text-green-500"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-secondary mb-2">Application Sent!</h3>
+                        <p class="text-gray-500 mb-8">Your smart profile has been successfully submitted to the employer.</p>
+                        <button onclick="location.reload()" class="w-full bg-primary hover:bg-primaryHover text-white font-bold py-3 rounded-xl transition-colors">
+                            Back to Jobs
+                        </button>
+                    </div >
+                `;
+            }, 1500);
         }
 
         window.onload = initApp;
