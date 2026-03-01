@@ -1,0 +1,285 @@
+--- iHarare ---
+/ | 
+/jobs/ | Jobs
+/categories/ | Categories
+/cv-search/ | Search for CVs
+/employers/ | Browse Employers
+/employers/register/ | Employer Signup
+/candidate/register/ | Candidate Sign up
+/login/ | Login
+/categories/accounting/ | Accounting
+/categories/administration/ | Administration
+/categories/agriculture/ | Agriculture
+/categories/applied-chemistry/ | Applied Chemistry
+/categories/apprentice/ | Apprentice
+/categories/artisan/ | Artisan
+/categories/arts/ | Arts
+/categories/auditing/ | Auditing
+/categories/automotive/ | Automotive
+/categories/aviation/ | Aviation
+/categories/biotechnology/ | Biotechnology
+/categories/business/ | Business
+/categories/business-studies/ | Business Studies
+/categories/college-intake/ | College Intake
+/categories/construction/ | Construction
+/categories/consultancy/ | Consultancy
+/categories/customer-service/ | Customer Service
+/categories/designer/ | Designer
+/categories/development-studies/ | Development Studies
+/categories/driver/ | Driver
+/categories/economics/ | Economics
+/categories/education/ | Education
+/categories/engineering/ | Engineering
+/categories/environmental-health/ | Environmental Health
+/categories/executive/ | Executive
+/categories/finance/ | Finance
+/categories/general-jobs/ | General Jobs
+/categories/government/ | Government
+/categories/graduate-trainees/ | Graduate Trainees
+/categories/healthcare/ | Healthcare
+/categories/hospitality/ | Hospitality
+/categories/human-resources/ | Human Resources
+/categories/ict/ | I.C.T
+/categories/internship/ | Internship
+/categories/law/ | Law
+/categories/local-government/ | Local Government
+/categories/logistics/ | Logistics
+/categories/mechanic/ | Mechanic
+/categories/media/ | Media
+/categories/minimal-qualifications/ | Minimal Qualifications
+/categories/mining/ | Mining
+/categories/ngos/ | NGOs
+/categories/other/ | Other
+/categories/project-administration/ | Project Administration
+/categories/psychology/ | Psychology
+/categories/purchasing-and-supply/ | Purchasing and supply
+/categories/quality-assurance/ | Quality Assurance
+/categories/real-estate/ | Real Estate
+/categories/records-management/ | Records Management
+/categories/retail-wholesale/ | Retail / Wholesale
+/categories/risk-and-insurance/ | Risk and Insurance
+/categories/sales-and-marketing/ | Sales and Marketing
+/categories/scholarships/ | Scholarships
+/categories/science/ | Science
+/categories/secretarial-receptionist/ | Secretarial / Receptionist
+/categories/security/ | Security
+/categories/social-science/ | Social Science
+/categories/social-work/ | Social Work
+/categories/software-engineering/ | Software Engineering
+/categories/statistics/ | Statistics
+/categories/telecommunications/ | Telecommunications
+/categories/transportation/ | Transportation
+/categories/voluntary/ | Voluntary
+/categories/woodwork/ | Woodwork
+/categories/journalism/ | journalism
+/categories/ | Browse All Categories
+/job/procurement-officer-secretary-office-assistants-office-clerks-front-desk-clerks-account-finance-officer-sales-marketing-officers-and-executive-internal-revenue-auditor-database-market-5705/ | 
+/job/procurement-officer-secretary-office-assistants-office-clerks-front-desk-clerks-account-finance-officer-sales-marketing-officers-and-executive-internal-revenue-auditor-database-market-5705/ | Procurement Officer, Secretary / Office Assistants
+/job/procurement-officer-secretary-office-assistants-office-clerks-front-desk-clerks-account-finance-officer-sales-marketing-officers-and-executive-internal-revenue-auditor-database-market-5705/ | View
+/job/sales-and-marketing-attachee-harare-5704/ | 
+/job/sales-and-marketing-attachee-harare-5704/ | Sales and Marketing Attachee - Harare
+/job/sales-and-marketing-attachee-harare-5704/ | View
+/job/sales-representatives-harare-5703/ | 
+/job/sales-representatives-harare-5703/ | Sales Representatives - Harare
+/job/sales-representatives-harare-5703/ | View
+/job/sales-representative-chiredzi-5702/ | 
+/job/sales-representative-chiredzi-5702/ | Sales Representative - Chiredzi
+/job/sales-representative-chiredzi-5702/ | View
+/job/graduate-trainee-programme-for-2026-2028-5701/ | 
+/job/graduate-trainee-programme-for-2026-2028-5701/ | Graduate Trainee Programme for 2026-2028.
+/job/graduate-trainee-programme-for-2026-2028-5701/ | View
+/job/finance-student-intern-5700/ | 
+/job/finance-student-intern-5700/ | Finance Student Intern
+/job/finance-student-intern-5700/ | View
+/job/production-controller-5699/ | 
+/job/production-controller-5699/ | Production Controller
+/job/production-controller-5699/ | View
+/job/risk-manager-5698/ | 
+/job/risk-manager-5698/ | Risk Manager
+/job/risk-manager-5698/ | View
+/job/network-hardware-administrator-5697/ | 
+/job/network-hardware-administrator-5697/ | Network & Hardware Administrator
+/job/network-hardware-administrator-5697/ | View
+/job/graduate-trainee-finance-5696/ | 
+/job/graduate-trainee-finance-5696/ | Graduate Trainee: Finance
+/job/graduate-trainee-finance-5696/ | View
+/job/graduate-trainee-human-resource-and-administration-5695/ | 
+/job/graduate-trainee-human-resource-and-administration-5695/ | Graduate Trainee: Human Resource and Administratio
+/job/graduate-trainee-human-resource-and-administration-5695/ | View
+/job/sales-executive-fmcg-5694/ | 
+/job/sales-executive-fmcg-5694/ | Sales Executive (FMCG)
+/job/sales-executive-fmcg-5694/ | View
+/job/lecturer-vacancies-5693/ | 
+/job/lecturer-vacancies-5693/ | Lecturer Vacancies
+/job/lecturer-vacancies-5693/ | View
+/job/assistant-driver-controller-x1-5692/ | 
+/job/assistant-driver-controller-x1-5692/ | Assistant Driver Controller x1
+/job/assistant-driver-controller-x1-5692/ | View
+/job/farmer-trainer-5690/ | 
+/job/farmer-trainer-5690/ | Farmer Trainer
+/job/farmer-trainer-5690/ | View
+/job/adolescent-education-for-health-and-well-being-community-and-engagement-consultant-5689/ | 
+/job/adolescent-education-for-health-and-well-being-community-and-engagement-consultant-5689/ | Adolescent Education for Health and Well-being Com
+/job/adolescent-education-for-health-and-well-being-community-and-engagement-consultant-5689/ | View
+/job/ndc-readiness-coordinator-open-to-all-applicants-5688/ | 
+/job/ndc-readiness-coordinator-open-to-all-applicants-5688/ | NDC Readiness Coordinator (Open to all applicants)
+/job/ndc-readiness-coordinator-open-to-all-applicants-5688/ | View
+/job/armed-security-guards-mine-sites-deployment-5687/ | 
+/job/armed-security-guards-mine-sites-deployment-5687/ | ARMED SECURITY GUARDS (MINE SITES DEPLOYMENT)
+/job/armed-security-guards-mine-sites-deployment-5687/ | View
+/job/motor-mechanic-5686/ | 
+/job/motor-mechanic-5686/ | Motor Mechanic
+/job/motor-mechanic-5686/ | View
+/job/medical-laboratory-5685/ | 
+/job/medical-laboratory-5685/ | Medical Laboratory
+/job/medical-laboratory-5685/ | View
+/jobs/ | browse more listing
+/location/bulawayo-province/ | Bulawayo Province
+/location/harare-province/ | Harare Province
+/location/manicaland/ | Manicaland
+/location/mashonaland-central/ | Mashonaland Central
+/location/mashonaland-east/ | Mashonaland East
+/location/mashonaland-west/ | Mashonaland West
+/location/masvingo-province/ | Masvingo Province
+/location/matabeleland-north/ | Matabeleland North
+/location/matabeleland-south/ | Matabeleland South
+/location/midlands/ | Midlands
+/location/rest-of-the-world/ | Rest of the World
+/location/southern-africa/ | Southern Africa
+/employers/register/ | Sign up as Employer
+/ | 
+https://www.facebook.com/ihararejobs/ | 
+https://twitter.com/ihararejobs | 
+https://www.linkedin.com/company/iharare/ | 
+/cdn-cgi/l/email-protection#422b2a2330233027282d2031022b2a23302330276c212d2f | 
+https://wa.me/263719553310?text=Hie%20iHarare%20Jobs | 
+/about-us/ | About iHarare Jobs
+/contact-us/ | Contact Us
+/terms_conditions_privacy/ | Terms & Conditions
+/privacy_policy/ | Privacy Policy
+/cookies/ | Cookies Policy
+/login/ | Log In
+/candidate/register/ | Register as a Job Seeker
+/employers/register/ | Register as an Employer
+https://blog.ihararejobs.com/blog | iHarare Jobs Blog
+https://iharare.com | News
+
+--- VacancyMail ---
+/ | 
+/jobs/ | Jobs
+/categories/ | Categories
+/cv-search/ | Search for CVs
+/candidate/register/ | Jobseeker Register CV
+/employers/register/ | Employer Register / Post Jobs
+/login/ | Login
+# | 
+/login/ | Login
+/candidate/register/ | Candidate Sign Up/Register
+/employers/register/ | Employer Sign Up/Register
+/organisations/tsuro-trust-1632/ | 
+/organisations/st-annes-hospital-2841/ | 
+/organisations/nash-paints-1195/ | 
+/organisations/bio-innovation-zimbabwe-biz-3709/ | 
+/organisations/webdev-group-414/ | 
+/organisations/rbz-reserve-bank-of-zimbabwe-917/ | 
+/organisations/first-capital-bank-zimbabwe-limited-3114/ | 
+/organisations/timb-1362/ | 
+/organisations/world-vision-942/ | 
+/organisations/green-fuel-602/ | 
+/organisations/ceshhar-zimbabwe-4037/ | 
+/organisations/hammer-and-tongues-africa-holdings-855/ | 
+/organisations/irvines-1833/ | 
+/organisations/associated-belts-and-bearings-4047/ | 
+/organisations/parrogate-zimbabwe-pvt-ltd-4091/ | 
+/organisations/community-technology-development-organisation-ctdo-1504/ | 
+/organisations/traverze-travel-3230/ | 
+/organisations/local-ngo-1022/ | 
+/categories/admin-office-jobs-in-zimbabwe/ | Admin & Office Jobs
+/categories/ngo-social-services-jobs-in-zimbabwe/ | NGO & Social Services Jobs
+/categories/healthcare-jobs-in-zimbabwe/ | Healthcare, Pharmacy, Doctors Jobs
+/categories/attachment-internship-jobs-in-zimbabwe/ | Attachment & Internship Jobs
+/categories/sales-marketing-jobs-in-zimbabwe/ | Sales & Marketing Jobs
+/categories/engineering-jobs-in-zimbabwe/ | Engineering Jobs
+/categories/ict-computer-jobs-in-zimbabwe/ | ICT & Computer Jobs
+/categories/she-jobs-in-zimbabwe/ | SHE Jobs
+/categories/agriculture-jobs-in-zimbabwe/ | Agriculture, Farming Jobs
+/categories/procurement-and-supply-chain-management-jobs-in-zimbabwe/ | Procurement, Purchasing  and Supply Chain Manageme
+/categories/ | See all Categories
+/location/botswana/ | Botswana Jobs
+/location/malawi/ | Malawi Jobs
+/location/matabeleland-northjobs/ | Matabeleland North Jobs
+/location/midlandsjobs/ | Midlands Jobs
+/location/matabeleland-southjobs/ | Matabeleland South Jobs
+/location/mashonaland-westjobs/ | Mashonaland West Jobs
+/location/manicalandjobs/ | Manicaland Jobs
+/location/mashonaland-eastjobs/ | Mashonaland East Jobs
+/location/hararejobs/ | Harare Jobs
+/location/mashonaland-centraljobs/ | Mashonaland Central Jobs
+/location/bulawayojobs/ | Bulawayo Jobs
+/location/masvingojobs/ | Masvingo Jobs
+/location/nkayi/ | Nkayi Jobs
+/location/south-africa/ | South Africa Jobs
+/location/zambia/ | Zambia Jobs
+/jobs/ | Browse All Jobs
+/jobs/security-personnel-66660/ | Security Personnel
+
+								
+								
+									
+		
+/jobs/data-capturers-66659/ | Data Capturers
+
+								
+								
+									
+						
+/jobs/sales-representatives-66657/ | Sales Representatives
+
+								
+								
+									
+/jobs/call-for-expression-of-interest-value-chain-assessments-neglected-underutilised-crops-traditional-grains-local-legumes-local-seeds-local-roots-tubers-hubs-for-agricultural-resilience-value-ch-66653/ | CALL FOR EXPRESSION OF INTEREST VALUE CHAIN ASSESS
+/jobs/call-for-expression-of-interest-consumer-trends-survey-focus-on-nus-foodsproducts-hubs-for-agricultural-resilience-value-chains-and-sustainable-transformation-harvest-project-66652/ | CALL FOR EXPRESSION OF INTEREST CONSUMER TRENDS SU
+/jobs/legal-secretary-66651/ | Legal Secretary
+
+								
+								
+									
+					
+/jobs/sales-representative-bulawayo-66631/ | Sales Representative - Bulawayo
+
+								
+								
+/jobs/territory-lead-territory-sales-supervisor-harare-66611/ | Territory Lead / Territory Sales Supervisor - Hara
+/jobs/driver-class-2-66605/ | Driver (Class 2)
+
+								
+								
+									
+				
+/jobs/receptionistadministrative-assistant-66604/ | Receptionist/Administrative Assistant
+
+								
+		
+/jobs/ | Browse All Jobs
+https://www.facebook.com/VacancyMailZW/ | 
+https://twitter.com/VacancyMail | 
+https://www.linkedin.com/company/vacancymail-co-zw/ | 
+/jobs/ | Browse Jobs
+/categories/ | Job Categories
+/candidate/my_curriculum_vitae/ | Add Resume / Curriculum Vitae
+/premium/ | Premium
+/organisations/ | Employers
+/testimonials/ | Testimonials
+/cv-search/ | Browse Candidates
+/employer/create_new_vacancy/ | Post a Job
+/about-us/ | About Us
+/contact-us/ | Contact Us
+/terms_conditions_privacy/ | Terms and Privacy Policy
+/cookies/ | Cookies Policy
+/disclaimer/ | Disclaimer
+/login/ | Log In
+/candidate/register/ | Register as a Job Seeker
+/employers/register/ | Register as an Employer
+https://blog.vacancymail.co.za/ | VacancyMail Blog
+https://savannanews.com/ | Savanna News

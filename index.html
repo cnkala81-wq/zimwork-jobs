@@ -15,28 +15,8 @@
     <meta property="og:description" content="Find the latest high-quality jobs in Zimbabwe.">
     <meta property="og:type" content="website">
 
-    <!-- GOOGLE JOBS SCHEMA (Hidden SEO code that makes Google rank your jobs higher than VacancyMail) -->
-    <script type="application/ld+json">
-    {
-      "@context" : "https://schema.org/",
-      "@type" : "JobPosting",
-      "title" : "Multiple Vacancies",
-      "description" : "Latest job vacancies in Zimbabwe across NGO, Mining, ICT, and Retail sectors.",
-      "datePosted" : "2026-02-28",
-      "validThrough" : "2026-12-31",
-      "employmentType" : "FULL_TIME",
-      "hiringOrganization" : {
-        "@type" : "Organization",
-        "name" : "ZimWork Employers"
-      },
-      "jobLocation" : {
-        "@type" : "Place",
-        "address" : {
-          "@type" : "PostalAddress",
-          "addressCountry": "ZW"
-        }
-      }
-    }
+    <!-- GOOGLE JOBS SCHEMA (Dynamically updated by Javascript) -->
+    <script id="jobSchema" type="application/ld+json">
     </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -95,6 +75,15 @@
             background-color: #f8fafc !important;
         }
     </style>
+    <!-- Google tag (gtag.js) - GA4 Tracking -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZIMWORK2026"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-ZIMWORK2026');
+    </script>
 </head>
 
 <body class="bg-gray-50 text-gray-800 antialiased min-h-screen flex flex-col">
@@ -282,17 +271,17 @@
         let mockDatabase = [];
         let allCategories = [];
 
-        
+
 
         let selectedJobId = 1;
 
-                async function initApp() {
+        async function initApp() {
             try {
                 // Ensure no caching so we always get the latest job scrape
                 const response = await fetch('jobs.json?t=' + new Date().getTime());
                 if (!response.ok) throw new Error('JSON not found');
                 const rawJobs = await response.json();
-                
+
                 // Map the JSON structure to the frontend expectations
                 mockDatabase = rawJobs.map((job, index) => ({
                     id: index + 1,
@@ -311,12 +300,38 @@
                     fullDescription: job.original_html,
                     applyLink: job.source_url
                 }));
-                
+
+                // Generate dynamic JSON-LD SEO schema
+                if (mockDatabase.length > 0) {
+                    const latestJob = mockDatabase[0];
+                    const schema = {
+                        "@context": "https://schema.org/",
+                        "@type": "JobPosting",
+                        "title": latestJob.title,
+                        "description": latestJob.snippet || latestJob.title,
+                        "datePosted": latestJob.posted,
+                        "employmentType": latestJob.type === "Full Time" ? "FULL_TIME" : "CONTRACTOR",
+                        "hiringOrganization": {
+                            "@type": "Organization",
+                            "name": latestJob.company
+                        },
+                        "jobLocation": {
+                            "@type": "Place",
+                            "address": {
+                                "@type": "PostalAddress",
+                                "addressLocality": latestJob.location,
+                                "addressCountry": "ZW"
+                            }
+                        }
+                    };
+                    document.getElementById('jobSchema').textContent = JSON.stringify(schema);
+                }
+
             } catch (error) {
                 console.error("Failed to fetch jobs.json:", error);
                 document.getElementById('jobCount').innerText = "Database offline";
             }
-            
+
             allCategories = [...new Set(mockDatabase.map(j => j.category))];
 
             renderCategories();
